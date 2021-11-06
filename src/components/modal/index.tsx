@@ -1,19 +1,25 @@
+import { useMemo } from 'react';
 import { Modal } from 'antd';
 import useModal from './hooks/useModal';
-import useBoolean from '../../hooks/useBoolean';
 
 interface IBasicModalProps {
   id: string;
   children: React.ReactNode;
   [key: string]: any;
+  onOkClick?: () => void;
 }
 
-const BasicModal = ({ id, children, ...rest }: IBasicModalProps) => {
-  const { visible, show, hide } = useModal(id);
+export const BasicModal = ({
+  id,
+  children,
+  onOkClick,
+  ...rest
+}: IBasicModalProps) => {
+  const { visible, hide } = useModal(id);
   return (
     <Modal
       onCancel={() => hide()}
-      onOk={() => hide()}
+      onOk={() => onOkClick && onOkClick()}
       visible={visible}
       {...rest}
     >
@@ -22,37 +28,25 @@ const BasicModal = ({ id, children, ...rest }: IBasicModalProps) => {
   );
 };
 
-interface BasicModalProps {
-  id: string;
-  title: string;
-  [key: string]: any;
-}
-
 interface IModalInnerProps {
   args?: any;
-  setConfirmLoadingTrue: () => void;
-  setConfirmLoadingFalse: () => void;
   [key: string]: any;
 }
 
-const createBasicModal = (
-  { id, title, ...rest }: BasicModalProps,
+export const createBasicModal = (
+  id: string,
   Comp: React.JSXElementConstructor<IModalInnerProps>,
 ) => {
   return (props: any) => {
-    const { args } = useModal(id);
-    const [loading, { setTrue, setFalse }] = useBoolean(false);
-    return (
-      <BasicModal id={id} title={title} confirmLoading={loading} {...rest}>
-        <Comp
-          args={args}
-          setConfirmLoadingTrue={setTrue}
-          setConfirmLoadingFalse={setFalse}
-          {...props}
-        ></Comp>
-      </BasicModal>
+    const { args, show, hide, resolveHide } = useModal(id);
+    const modalEvent = useMemo(
+      () => ({
+        show,
+        hide,
+        resolveHide,
+      }),
+      [show, hide, resolveHide],
     );
+    return <Comp args={args} modalEvent={modalEvent} {...props} />;
   };
 };
-
-export default createBasicModal;

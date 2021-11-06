@@ -1,24 +1,19 @@
 import React from 'react';
 import { Button } from 'antd';
-import { createBasicModal, useModal } from '../components';
+import { createBasicModal, useModal, BasicModal } from '../components';
 import styles from './index.less';
 
 const MyModal = createBasicModal(
-  {
-    id: 'MyModal',
-    title: 'MyModal',
-  },
-  ({
-    args,
-    setConfirmLoadingTrue,
-    setConfirmLoadingFalse,
-  }) => {
+  'MyModal',
+  ({ args, modalEvent: { resolveHide } }) => {
     return (
-      <div>
-        MyModal{args}
-        <Button onClick={setConfirmLoadingTrue}>setConfirmLoadingTrue</Button>
-        <Button onClick={setConfirmLoadingFalse}>setConfirmLoadingFalse</Button>
-      </div>
+      <BasicModal
+        id="MyModal"
+        title="MyModal"
+        onOkClick={() => resolveHide('callbak')}
+      >
+        <div>MyModal{args}</div>
+      </BasicModal>
     );
   },
 );
@@ -31,7 +26,13 @@ export default function IndexPage() {
 
       <MyModal></MyModal>
 
-      <Button onClick={() => show('useModalModel')}>show</Button>
+      <Button
+        onClick={() =>
+          show('useModalModel').then((result) => console.log(result))
+        }
+      >
+        show
+      </Button>
       <Button onClick={() => hide()}>hide</Button>
     </div>
   );
