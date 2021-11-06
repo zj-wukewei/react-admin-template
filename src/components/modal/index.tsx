@@ -30,6 +30,11 @@ export const BasicModal = ({
 
 interface IModalInnerProps {
   args?: any;
+  modalEvent: {
+    show: () => void;
+    hide: () => void;
+    resolveHide: (relust: any) => void;
+  };
   [key: string]: any;
 }
 
