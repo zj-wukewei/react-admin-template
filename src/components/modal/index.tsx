@@ -28,9 +28,16 @@ interface BasicModalProps {
   [key: string]: any;
 }
 
+interface IModalInnerProps {
+  args?: any;
+  setConfirmLoadingTrue: () => void;
+  setConfirmLoadingFalse: () => void;
+  [key: string]: any;
+}
+
 const createBasicModal = (
   { id, title, ...rest }: BasicModalProps,
-  Comp: any,
+  Comp: React.JSXElementConstructor<IModalInnerProps>,
 ) => {
   return (props: any) => {
     const { args } = useModal(id);

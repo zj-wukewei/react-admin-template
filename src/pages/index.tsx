@@ -12,10 +12,6 @@ const MyModal = createBasicModal(
     args,
     setConfirmLoadingTrue,
     setConfirmLoadingFalse,
-  }: {
-    args: string;
-    setConfirmLoadingTrue: () => void;
-    setConfirmLoadingFalse: () => void;
   }) => {
     return (
       <div>
