@@ -21,6 +21,9 @@ const useModal = (modalId: string) => {
   );
 
   const hide = useCallback(() => {
+    if (modalCallbacks[modalId]) {
+      delete modalCallbacks[modalId];
+    }
     hideModal(modalId);
   }, [modalId]);
 
