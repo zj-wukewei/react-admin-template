@@ -14,6 +14,7 @@ export interface TableRegisterProps extends TableRegister {
 }
 
 export interface TableActions {
-  refresh: () => void
-  manualRun: (params: any) => void
+  refresh: () => void;
+  manualRun: (params: any) => void;
+  refreshStartPage: () => void;
 }
