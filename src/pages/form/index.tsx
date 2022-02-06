@@ -15,6 +15,8 @@ const FormDemo = () => {
       component: 'Input',
       name: "name1",
       label: "姓名2",
+      dependencieNames: ["name"],
+      renderShowItem: ({ name }) => name == 'wkw',
       required: true,
     }]
   });
