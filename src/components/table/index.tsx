@@ -2,8 +2,7 @@ import React, { forwardRef, useImperativeHandle } from 'react';
 import { Table } from 'antd';
 import { useRequest } from 'umi';
 import { TableRegisterProps } from './typing';
-import useForm from '../form/hooks/useForm';
-import FormSchemas from '../form';
+import FormTable from '../form/cpmponents/FormTable';
 
 const BasicTable = forwardRef(
   (props: TableRegisterProps, ref: React.Ref<any>) => {
@@ -28,13 +27,6 @@ const BasicTable = forwardRef(
       },
     }));
 
-    const [register] = useForm({
-      labelCol: { span: 6 },
-      wrapperCol: { span: 18 },
-      layout: 'horizontal',
-      tableForm: true,
-      schemas: props.schemas || [],
-    });
 
     const hanldeOnOk = (values: any) => {
       run({
@@ -47,10 +39,13 @@ const BasicTable = forwardRef(
     return (
       <>
         {props.schemas && props.schemas.length > 0 && (
-          <FormSchemas
-            {...register}
+          <FormTable
+            labelCol={props.labelCol}
+            wrapperCol={props.wrapperCol}
+            layout={props.layout}
+            schemas={props.schemas}
             onTableFormClick={hanldeOnOk}
-          ></FormSchemas>
+          />
         )}
         <Table rowKey={props.rowKey} columns={props.columns} {...tableProps} />
       </>

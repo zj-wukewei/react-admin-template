@@ -1,12 +1,17 @@
 import React from "react";
 import { CombineService } from '@ahooksjs/use-request/lib/types';
 import { SchemaItem } from "../form/typing";
+import { ColProps } from 'antd';
 
+type FormLayout = 'horizontal' | 'inline' | 'vertical';
 export interface TableRegister<R = any, P extends any[] = any> {
   api: CombineService<R, P>;
   columns: any[];
   rowKey: string | ((record: any) => string);
   schemas?: SchemaItem[];
+  labelCol?: ColProps;
+  wrapperCol?: ColProps;
+  layout?: FormLayout;
 }
 
 export interface TableRegisterProps extends TableRegister {
