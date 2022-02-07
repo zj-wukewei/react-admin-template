@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Form, Row, Col, Button, Grid } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
+import FormTableActions from './cpmponents/FormTableActions';
 import { FormSchemasProps, SchemaItem } from './typing';
 import { componentMap } from './componentMap';
 import './style.less';
@@ -16,36 +16,6 @@ const screensResponsive: { [key: string]: number } = {
   xxl: 4,
 };
 
-const defaultCollapseRender = (open: boolean) => {
-  if (!open) {
-    return (
-      <>
-        展开
-        <DownOutlined
-          style={{
-            marginLeft: '0.5em',
-            transition: '0.3s all',
-            transform: `rotate(${open ? 0 : 0.5}turn)`,
-          }}
-        />
-      </>
-    );
-  }
-
-  return (
-    <>
-      收起
-      <DownOutlined
-        style={{
-          marginLeft: '0.5em',
-          transition: '0.3s all',
-          transform: `rotate(${open ? 0 : 0.5}turn)`,
-        }}
-      />
-    </>
-  );
-};
-
 const FormSchemas = (props: FormSchemasProps) => {
   const {
     schemas,
@@ -53,6 +23,7 @@ const FormSchemas = (props: FormSchemasProps) => {
     rowProps = {},
     colProps = {},
     tableForm = false,
+    onTableFormClick,
     ...restForm
   } = props;
   const screens = useBreakpoint();
@@ -72,8 +43,17 @@ const FormSchemas = (props: FormSchemasProps) => {
 
   const [open, setOpen] = useState(false);
 
-  console.log('11111', firstResponsiveItemMax);
+  const handleOnReset = () => {
+    form.resetFields();
+  };
 
+  const handleOnOk = async () => {
+    const values = await form.validateFields();
+    console.log("handleOnOk", values)
+    if (values) {
+      onTableFormClick && onTableFormClick(values);
+    }
+  };
   return (
     <Form className="form-schemas" form={form} {...restForm}>
       <Row {...getRowProps}>
@@ -158,15 +138,12 @@ const FormSchemas = (props: FormSchemasProps) => {
           );
         })}
         {tableForm && (
-          <Col className="table-form-action">
-            <Button type="primary">搜索</Button>
-            <Button>重置</Button>
-            <Button type="link" onClick={() => setOpen(!open)}>
-            {
-              defaultCollapseRender(open)
-            }
-            </Button>
-          </Col>
+          <FormTableActions
+            open={open}
+            handleOnOpen={() => setOpen(!open)}
+            handleOnReset={handleOnReset}
+            hanldeOnOk={handleOnOk}
+          />
         )}
       </Row>
     </Form>

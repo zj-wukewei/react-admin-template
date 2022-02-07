@@ -11,13 +11,13 @@ const FormDemo = () => {
         component: 'Input',
         name: 'name',
         label: '姓名',
-        required: true,
+        rules: [{ required: true, message: '请输入' }],
       },
       {
         component: 'Select',
         name: 'select',
         label: '姓名',
-        required: true,
+        rules: [{ required: true, message: '请输入' }],
         componentProps: {
           options: [
             {
@@ -31,14 +31,19 @@ const FormDemo = () => {
           ],
         },
       },
-      { component: 'Input', name: 'name2', label: '姓名44', required: true },
+      {
+        component: 'Input',
+        name: 'name2',
+        label: '姓名44',
+        rules: [{ required: true, message: '请输入' }],
+      },
       {
         component: 'Input',
         name: 'name1',
         label: '姓名2',
         // dependencieNames: ['name', 'select'],
         // renderShowItem: ({ name, select }) => name == 'wkw' && select == '1',
-        required: true,
+        rules: [{ required: true, message: '请输入' }],
       },
     ],
   });

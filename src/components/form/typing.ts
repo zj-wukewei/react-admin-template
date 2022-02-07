@@ -6,6 +6,7 @@ export interface FormSchemasProps extends FormProps {
   rowProps?: RowProps;
   colProps?: ColProps;
   tableForm?: boolean;
+  onTableFormClick?: (valus: any) => void
 }
 
 export interface SchemaItem extends FormItemProps {
