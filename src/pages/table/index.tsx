@@ -25,6 +25,7 @@ const TableDemo = () => {
   const [register, { refresh, manualRun, refreshStartPage }] = useTable({
     api: fetcApi,
     rowKey: 'id',
+    syncUrl: true,
     columns: [
       {
         title: 'id',

@@ -12,6 +12,7 @@ export interface TableRegister<R = any, P extends any[] = any> {
   labelCol?: ColProps;
   wrapperCol?: ColProps;
   layout?: FormLayout;
+  syncUrl?: boolean;
 }
 
 export interface TableRegisterProps extends TableRegister {

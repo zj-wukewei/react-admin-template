@@ -1,4 +1,4 @@
-import { FormProps, FormItemProps, FormInstance, RowProps, ColProps } from "antd";
+import { FormProps, FormItemProps, FormInstance, RowProps, ColProps, InputProps, SelectProps } from "antd";
 
 export interface FormSchemasProps extends FormProps {
   schemas: SchemaItem[];
@@ -15,7 +15,9 @@ export interface SchemaItem extends FormItemProps {
   //依赖莫个值
   dependencieNames?: string[];
   renderShowItem?: (valus: any) => boolean;
-  componentProps?: any;
+  componentProps?: ComponentTypeProps;
 }
 
 export type ComponentType = "Input" | "Select";
+
+export type ComponentTypeProps = InputProps | SelectProps<any>;
