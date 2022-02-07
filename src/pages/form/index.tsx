@@ -6,21 +6,43 @@ const FormDemo = () => {
     wrapperCol: { span: 18 },
     layout: 'horizontal',
     tableForm: true,
-    schemas: [{
-      component: 'Input',
-      name: "name",
-      label: "姓名",
-      required: true,
-    }, {
-      component: 'Input',
-      name: "name1",
-      label: "姓名2",
-      dependencieNames: ["name"],
-      renderShowItem: ({ name }) => name == 'wkw',
-      required: true,
-    }]
+    schemas: [
+      {
+        component: 'Input',
+        name: 'name',
+        label: '姓名',
+        required: true,
+      },
+      {
+        component: 'Select',
+        name: 'select',
+        label: '姓名',
+        required: true,
+        componentProps: {
+          options: [
+            {
+              label: 'china',
+              value: 1,
+            },
+            {
+              label: 'usa',
+              value: 2,
+            },
+          ],
+        },
+      },
+      { component: 'Input', name: 'name2', label: '姓名44', required: true },
+      {
+        component: 'Input',
+        name: 'name1',
+        label: '姓名2',
+        // dependencieNames: ['name', 'select'],
+        // renderShowItem: ({ name, select }) => name == 'wkw' && select == '1',
+        required: true,
+      },
+    ],
   });
-  return <FormSchemas {...register}></FormSchemas>
+  return <FormSchemas {...register}></FormSchemas>;
 };
 
 export default FormDemo;
