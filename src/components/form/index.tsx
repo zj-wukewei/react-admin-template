@@ -21,7 +21,7 @@ const FormSchemas = (props: FormSchemasProps) => {
     schemas,
     form,
     rowProps = {},
-    colProps = {},
+    colProps = { span: 24 },
     tableForm = false,
     onTableFormClick,
     ...restForm
@@ -49,7 +49,6 @@ const FormSchemas = (props: FormSchemasProps) => {
 
   const handleOnOk = async () => {
     const values = await form.validateFields();
-    console.log("handleOnOk", values)
     if (values) {
       onTableFormClick && onTableFormClick(values);
     }

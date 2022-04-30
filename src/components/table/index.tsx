@@ -2,7 +2,7 @@ import React, { forwardRef, useImperativeHandle, useEffect } from 'react';
 import { Table } from 'antd';
 import { useRequest } from 'umi';
 import { TableRegisterProps } from './typing';
-import FormTable from '../form/cpmponents/FormTable';
+import FormTable from '../Form/cpmponents/FormTable';
 import useUrlState from '@ahooksjs/use-url-state';
 
 const BasicTable = forwardRef(

@@ -1,11 +1,11 @@
-import { createBasicModal, BasicModal } from './modal/index';
-import useModal from './modal/hooks/useModal';
+import { createBasicModal, BasicModal } from './Modal/index';
+import useModal from './Modal/hooks/useModal';
 
-import useForm from "./form/hooks/useForm";
-import FormSchemas from './form';
+import useForm from "./Form/hooks/useForm";
+import FormSchemas from './Form';
 
-import useTable from "./table/hooks/useTable";
-import BasicTable from './table';
+import useTable from "./Table/hooks/useTable";
+import BasicTable from './Table';
 
 export {
   createBasicModal,

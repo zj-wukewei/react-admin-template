@@ -1,6 +1,6 @@
 import React from "react";
 import { CombineService } from '@ahooksjs/use-request/lib/types';
-import { SchemaItem } from "../form/typing";
+import { SchemaItem } from "../Form/typing";
 import { ColProps } from 'antd';
 
 type FormLayout = 'horizontal' | 'inline' | 'vertical';

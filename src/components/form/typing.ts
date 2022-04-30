@@ -18,6 +18,8 @@ export interface SchemaItem extends FormItemProps {
   componentProps?: ComponentTypeProps;
 }
 
+export type FormHookConfig = Omit<FormSchemasProps, 'form' | 'onTableFormOk'>
+
 export type ComponentType = "Input" | "Select";
 
 export type ComponentTypeProps = InputProps | SelectProps<any>;
