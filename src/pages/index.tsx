@@ -105,6 +105,7 @@ export default function IndexPage() {
       />
 
       <FormModal
+        type='FormModal'
         formConfig={form1}
         modalComponent={{ title: "EditFormModal" }}
         modalId="EditFormModal"

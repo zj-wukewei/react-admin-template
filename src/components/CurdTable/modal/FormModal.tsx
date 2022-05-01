@@ -3,9 +3,9 @@ import { useRequest } from 'umi';
 import { BasicModal, createBasicModal } from '../../Modal';
 import FormSchemas from '../../Form';
 import useForm from '../../Form/hooks/useForm';
-import { EditModalProps } from './typing';
+import { FormModalProps } from './typing';
 
-const FromModal = (props: EditModalProps) => {
+const FromModal = (props: FormModalProps) => {
   const { modalComponent = {} } = props;
   const [register, form] = useForm(props.formConfig);
   const BasicEditModal = createBasicModal(

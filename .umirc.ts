@@ -13,6 +13,7 @@ export default defineConfig({
   routes: [
     { path: '/', component: '@/pages/index' },
     { path: '/table', component: '@/pages/table/index' },
+    { path: '/crudTable', component: '@/pages/crudTable/index' },
     { path: '/form', component: '@/pages/form/index' },
   ],
   fastRefresh: {},

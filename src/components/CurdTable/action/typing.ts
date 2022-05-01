@@ -1,17 +1,20 @@
-import { ButtonType } from "antd/es/button";
-export interface TabeDeleteProps {
+import { ButtonProps } from "antd/es/button";
+import { ActionType } from "../typing";
+
+export interface BasicActionProp {
+  type: ActionType
+}
+export interface TabeDeleteProps extends BasicActionProp {
   //暂时先定义删除
   api: (id: any) => Promise<any>;
   rowKey?: string;
   record: any;
   title?: string;
-  okText?: string;
-  cancelText?: string;
 };
 
-export interface ModalButtomProps {
+export interface ModalActionProps extends BasicActionProp {
   text: string;
   modalId: string;
-  type?: ButtonType;
   record?: any;
+  buttonComponent?: ButtonProps
 }

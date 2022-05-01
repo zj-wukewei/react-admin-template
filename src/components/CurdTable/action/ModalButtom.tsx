@@ -1,15 +1,15 @@
 import { Button } from 'antd';
 import useModal from '../../Modal/hooks/useModal';
-import { ModalButtomProps } from './typing';
+import { ModalActionProps } from './typing';
 
-const ModalButtom = (props: ModalButtomProps) => {
-  const { type = 'primary', record } = props;
+const ModalButtom = (props: ModalActionProps) => {
+  const { record, buttonComponent = { type : 'text' } } = props;
   const { show, hide } = useModal(props.modalId);
   const handleOnClick = () => {
     show(record);
   };
   return (
-    <Button type={type} onClick={handleOnClick}>
+    <Button {...buttonComponent} onClick={handleOnClick}>
       {props.text}
     </Button>
   );

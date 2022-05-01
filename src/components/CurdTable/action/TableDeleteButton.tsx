@@ -6,8 +6,6 @@ const TableDelete = (props: TabeDeleteProps) => {
   const {
     api,
     title = '你确定要删除吗？',
-    okText = '确定',
-    cancelText = '取消',
     rowKey = 'id',
     record,
   } = props;
@@ -25,8 +23,6 @@ const TableDelete = (props: TabeDeleteProps) => {
       title={title}
       icon={<QuestionCircleOutlined style={{ color: 'red' }} />}
       onConfirm={handleOnConfirm}
-      okText={okText}
-      cancelText={cancelText}
     >
       <Button type="text">删除</Button>
     </Popconfirm>
