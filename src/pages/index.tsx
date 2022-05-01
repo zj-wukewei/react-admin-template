@@ -106,7 +106,7 @@ export default function IndexPage() {
 
       <EditFormModal
         formConfig={form1}
-        title="EditFormModal"
+        modalComponent={{ title: "EditFormModal" }}
         modalId="EditFormModal"
         api={apiForm}
       ></EditFormModal>

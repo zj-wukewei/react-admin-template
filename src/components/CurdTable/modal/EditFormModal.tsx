@@ -6,7 +6,7 @@ import useForm from '../../Form/hooks/useForm';
 import { EditModalProps } from './typing';
 
 const EditFromModal = (props: EditModalProps) => {
-  const { okText = '确定', cancelText = '取消' } = props;
+  const { modalComponent = {} } = props;
   const [register, form] = useForm(props.formConfig);
   const BasicEditModal = createBasicModal(
     props.modalId,
@@ -28,11 +28,10 @@ const EditFromModal = (props: EditModalProps) => {
       return (
         <BasicModal
           id={props.modalId}
-          title={props.title}
+          title={props.modalComponent?.title}
           confirmLoading={loading}
-          okText={okText}
-          cancelText={cancelText}
           onOkClick={handleOkClick}
+          {...modalComponent}
         >
           <FormSchemas {...register} />
         </BasicModal>
