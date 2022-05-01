@@ -5,7 +5,7 @@ import FormSchemas from '../../Form';
 import useForm from '../../Form/hooks/useForm';
 import { EditModalProps } from './typing';
 
-const EditFromModal = (props: EditModalProps) => {
+const FromModal = (props: EditModalProps) => {
   const { modalComponent = {} } = props;
   const [register, form] = useForm(props.formConfig);
   const BasicEditModal = createBasicModal(
@@ -42,4 +42,4 @@ const EditFromModal = (props: EditModalProps) => {
   return <BasicEditModal />;
 };
 
-export default EditFromModal;
+export default FromModal;

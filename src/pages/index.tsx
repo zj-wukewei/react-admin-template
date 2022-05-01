@@ -4,7 +4,7 @@ import { createBasicModal, useModal, BasicModal } from '../components';
 import { FormHookConfig } from '../components/Form/typing';
 import TableDeleteButton from '../components/CurdTable/action/TableDeleteButton';
 import ModalButtom from '../components/CurdTable/action/ModalButtom';
-import EditFormModal from '../components/CurdTable/modal/EditFormModal';
+import FormModal from '../components/CurdTable/modal/FormModal';
 import styles from './index.less';
 
 const MyModal = createBasicModal(
@@ -104,12 +104,12 @@ export default function IndexPage() {
         text="打开modalid为MyModal"
       />
 
-      <EditFormModal
+      <FormModal
         formConfig={form1}
         modalComponent={{ title: "EditFormModal" }}
         modalId="EditFormModal"
         api={apiForm}
-      ></EditFormModal>
+      ></FormModal>
     </div>
   );
 }
