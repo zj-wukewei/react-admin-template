@@ -87,9 +87,6 @@ const TableDemo = () => {
 
   return (
     <>
-      <Button onClick={refresh}>refresh</Button>
-      <Button onClick={refreshStartPage}>refreshStartPage</Button>
-      <Button onClick={() => manualRun({ a: "111" })}>manualRun</Button>
       <BasicTable {...register} />
     </>
   );

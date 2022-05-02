@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 import { SchemaItem } from '../typing';
-import { ColProps } from 'antd';
+import { ColProps, Card } from 'antd';
 import useForm from '../hooks/useForm';
 import FormSchemas from '../index';
 
@@ -12,7 +12,7 @@ interface FormTableProps {
   wrapperCol?: ColProps;
   layout?: FormLayout;
   onTableFormClick: (valus: any) => void;
-  queryState?: any
+  queryState?: any;
   syncUrl?: boolean;
 }
 
@@ -35,15 +35,14 @@ const FormTable = (props: FormTableProps) => {
 
   useEffect(() => {
     if (syncUrl && queryState) {
-      form.setFieldsValue(queryState)
+      form.setFieldsValue(queryState);
     }
-  }, [queryState])
+  }, [queryState]);
 
   return (
-    <FormSchemas
-      {...register}
-      onTableFormClick={props.onTableFormClick}
-    />
+    <Card  style={{ marginBottom: 16 }} bodyStyle={{ padding: "24px 24px 0px 24px", background: "white"  }}>
+      <FormSchemas {...register} onTableFormClick={props.onTableFormClick} />
+    </Card>
   );
 };
 

@@ -94,9 +94,10 @@ export default function IndexPage() {
 
       <MyModal></MyModal>
 
-      <TableDeleteButton api={api} record={{ id: 1111 }} />
+      <TableDeleteButton type='TabeDelete' api={api} record={{ id: 1111 }} />
 
       <ModalButtom
+        type='ModalButtom'
         record={{
           name2: '1111',
         }}
